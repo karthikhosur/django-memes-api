@@ -10,6 +10,8 @@ import re
 @api_view(['GET'])
 def post_collection(request):
     if request.method == 'GET':
+        total_results = []
+        # t_res_template={"news_name": "","news_url": "","news_description": "","meme_url": ""}
         url = "https://bing-news-search1.p.rapidapi.com/news"
 
         querystring = {"setLang": 'EN', "cc": 'US',
@@ -24,26 +26,32 @@ def post_collection(request):
         response = requests.request(
             "GET", url, headers=headers, params=querystring)
 
-        # print(response.json())
         data = response.json()
         data = data['value']
         news_names = []
         news_urls = []
+        news_description = []
         for d in data:
             news_names.append(d['name'])
             news_urls.append(d['url'])
-            news_urls.append(d['description'])
+            news_description.append(d['description'])
 
         nlp = spacy.load("en_core_web_sm")
 
         s = ' '.join(news_names)
-        doc = nlp(s)
+        for i in range(len(news_names)):
 
-        proper_nouns_list = extract_proper_nouns(doc)
+            doc = nlp(news_names[i])
 
-        image_urls = get_image_urls(proper_nouns_list)
-        print(image_urls)
-        return Response({'data': image_urls})
+            proper_nouns_list = extract_proper_nouns(doc)
+
+            image_urls = get_image_urls(proper_nouns_list)
+            if len(image_urls) > 1:
+                t_res_template = {"news_name": news_names[i], "news_url": news_urls[i],
+                                  "news_description": news_description[i], "meme_urls": image_urls}
+
+                total_results.append(t_res_template)
+        return Response({'data': total_results})
 
 
 def extract_proper_nouns(doc):

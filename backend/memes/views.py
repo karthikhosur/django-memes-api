@@ -77,12 +77,12 @@ def get_image_urls(proper_nouns_list):
     for i in range(len(proper_nouns_list)):
         res = re.sub(r'[^a-zA-Z]', '', str(proper_nouns_list[i]))
         if len(res) > 2:
-            q = str(proper_nouns_list[i]) + " Memes"
+            q = str(proper_nouns_list[i]) + " " + " Memes"
 
             q = q.replace(" ", "%20")
 
             url = "https://serpapi.com/search.json?q="+q + \
-                "&tbm=isch&ijn=0&api_key=6a264e162a0d9e3ef8b8b0d381a1d38b8b61f6ae7096d61d37c3580394a355a6&tbs=qdr:d"
+                "&tbm=isch&ijn=0&api_key=2c76a8db8a76842ddb94e6fdf754aa85c1682b7bdc52b38c77c637dc4d03352b&tbs=qdr:d"
 
             payload = {}
             headers = {}

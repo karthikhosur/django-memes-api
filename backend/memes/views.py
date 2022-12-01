@@ -297,11 +297,11 @@ def post_collection(request):
                             results['images_results'][i]['original'])
                         i += 1
 
-            if len(image_urls) > 1:
-                t_res_template = {"news_name": news_names[i], "news_url": news_urls[i],
-                                  "news_description": news_description[i], "meme_urls": image_urls}
+                    if len(image_urls) > 1:
+                        t_res_template = {"news_name": news_names[i], "news_url": news_urls[i],
+                                          "news_description": news_description[i], "meme_urls": image_urls}
 
-                total_results.append(t_res_template)
+                        total_results.append(t_res_template)
 
         json_object = json.dumps(total_results, indent=4)
 
@@ -332,5 +332,7 @@ def extract_proper_nouns(doc):
 @api_view(['GET'])
 def cached_post_collection(request):
     if request.method == 'GET':
-        
+        f = open('data.json')
+        data = json.load(f)
+        new_data = json.dumps(data)
         return Response(return_data)

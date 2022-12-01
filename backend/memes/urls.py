@@ -7,5 +7,5 @@ from .views import (
 
 urlpatterns = [
     re_path('api', post_collection),
-    re_path('api/cache', cached_post_collection),
+    re_path('cache', cached_post_collection),
 ]

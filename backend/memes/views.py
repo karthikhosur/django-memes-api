@@ -332,7 +332,5 @@ def extract_proper_nouns(doc):
 @api_view(['GET'])
 def cached_post_collection(request):
     if request.method == 'GET':
-        f = open('data.json')
-        data = json.load(f)
-        new_data = json.dumps(data)
+        
         return Response(return_data)

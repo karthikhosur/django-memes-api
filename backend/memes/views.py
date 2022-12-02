@@ -5,7 +5,8 @@ import requests
 import spacy
 import re
 import json
-
+from supabase import create_client, Client
+import os
 
 return_data = {
     "data": [
@@ -336,3 +337,33 @@ def cached_post_collection(request):
         data = json.load(f)
         new_data = json.dumps(data)
         return Response(return_data)
+
+
+@api_view(['POST'])
+def user_subscribe(request):
+    if request.method == 'POST':
+        email_id = request.POST.get('email_id')
+        print(email_id)
+        if "@" in email_id:
+
+            url = "https://uetokeircacpothqcydn.supabase.co"
+            key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVldG9rZWlyY2FjcG90aHFjeWRuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Njk5NTM0NzYsImV4cCI6MTk4NTUyOTQ3Nn0.qAlbK3K3fzPYnUsfI1ygnslC4fyoDo2UVz8Pz0OiboI"
+            supabase = create_client(url, key)
+            data = supabase.table("Subscribers").insert(
+                {"email_id": email_id}).execute()
+
+        return Response({'data': 'success'})
+
+
+@api_view(['POST'])
+def subscribe_or_not(request):
+    if request.method == 'POST':
+        email_id = request.POST.get('email_id')
+        if "@" in email_id:
+            url = "https://uetokeircacpothqcydn.supabase.co"
+            key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVldG9rZWlyY2FjcG90aHFjeWRuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Njk5NTM0NzYsImV4cCI6MTk4NTUyOTQ3Nn0.qAlbK3K3fzPYnUsfI1ygnslC4fyoDo2UVz8Pz0OiboI"
+            supabase = create_client(url, key)
+            data = supabase.table("Subscribers").select("*").execute()
+            print(data)
+
+        return Response({'data': 'success'})

@@ -5,8 +5,8 @@ import requests
 import spacy
 import re
 import json
-from supabase import create_client, Client
 import os
+from .models import Subscribers
 
 return_data = {
     "data": [
@@ -343,16 +343,13 @@ def cached_post_collection(request):
 def user_subscribe(request):
     if request.method == 'POST':
         email_id = request.POST.get('email_id')
-        print(email_id)
         if "@" in email_id:
+            instance = Subscribers.objects.all().values_list("email_id", flat=True)
+            if email_id not in instance:
+                Subscribers.objects.create(email_id=email_id)
+                return Response({"message": "Subscribed Successfully"})
 
-            url = "https://uetokeircacpothqcydn.supabase.co"
-            key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVldG9rZWlyY2FjcG90aHFjeWRuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Njk5NTM0NzYsImV4cCI6MTk4NTUyOTQ3Nn0.qAlbK3K3fzPYnUsfI1ygnslC4fyoDo2UVz8Pz0OiboI"
-            supabase = create_client(url, key)
-            data = supabase.table("Subscribers").insert(
-                {"email_id": email_id}).execute()
-
-        return Response({'data': 'success'})
+        return Response({'data': 'failed'})
 
 
 @api_view(['POST'])
@@ -360,10 +357,16 @@ def subscribe_or_not(request):
     if request.method == 'POST':
         email_id = request.POST.get('email_id')
         if "@" in email_id:
-            url = "https://uetokeircacpothqcydn.supabase.co"
-            key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVldG9rZWlyY2FjcG90aHFjeWRuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Njk5NTM0NzYsImV4cCI6MTk4NTUyOTQ3Nn0.qAlbK3K3fzPYnUsfI1ygnslC4fyoDo2UVz8Pz0OiboI"
-            supabase = create_client(url, key)
-            data = supabase.table("Subscribers").select("*").execute()
-            print(data)
+            instance = Subscribers.objects.filter(
+                email_id=email_id).values_list("email_id", flat=True)
+            if len(instance) > 0:
+                return Response({'data': 'true'})
 
-        return Response({'data': 'success'})
+    return Response({'data': 'false'})
+
+
+@api_view(['GET'])
+def all_subscribers(request):
+    if request.method == 'GET':
+        instance = Subscribers.objects.all().values_list("email_id", flat=True)
+        return Response({'data': instance})

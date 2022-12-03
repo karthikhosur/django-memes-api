@@ -7,6 +7,7 @@ import re
 import json
 import os
 from .models import Subscribers
+from django.http import JsonResponse
 
 return_data = {
     "data": [
@@ -347,9 +348,9 @@ def user_subscribe(request):
             instance = Subscribers.objects.all().values_list("email_id", flat=True)
             if email_id not in instance:
                 Subscribers.objects.create(email_id=email_id)
-                return Response.json({"message": "Subscribed Successfully"})
+                return JsonResponse({"message": "Subscribed Successfully"})
 
-        return Response.json({'data': 'failed'})
+        return JsonResponse({'data': 'failed'})
 
 
 @api_view(['POST'])
@@ -357,16 +358,17 @@ def subscribe_or_not(request):
     if request.method == 'POST':
         email_id = request.POST.get('email_id')
         if "@" in email_id:
+            print(email_id)
             instance = Subscribers.objects.filter(
                 email_id=email_id).values_list("email_id", flat=True)
             if len(instance) > 0:
-                return Response.json({'data': 'true'})
+                return JsonResponse({'data': 'true'})
 
-    return Response.json({'data': 'false'})
+    return JsonResponse({'data': 'false'})
 
 
 @api_view(['GET'])
 def all_subscribers(request):
     if request.method == 'GET':
         instance = Subscribers.objects.all().values_list("email_id", flat=True)
-        return Response({'data': instance})
+        return JsonResponse({'data': instance})

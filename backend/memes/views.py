@@ -347,9 +347,9 @@ def user_subscribe(request):
             instance = Subscribers.objects.all().values_list("email_id", flat=True)
             if email_id not in instance:
                 Subscribers.objects.create(email_id=email_id)
-                return Response({"message": "Subscribed Successfully"})
+                return Response.json({"message": "Subscribed Successfully"})
 
-        return Response({'data': 'failed'})
+        return Response.json({'data': 'failed'})
 
 
 @api_view(['POST'])
@@ -360,9 +360,9 @@ def subscribe_or_not(request):
             instance = Subscribers.objects.filter(
                 email_id=email_id).values_list("email_id", flat=True)
             if len(instance) > 0:
-                return Response({'data': 'true'})
+                return Response.json({'data': 'true'})
 
-    return Response({'data': 'false'})
+    return Response.json({'data': 'false'})
 
 
 @api_view(['GET'])

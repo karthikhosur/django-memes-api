@@ -12,43 +12,6 @@ from django.http import JsonResponse
 return_data = {
     "data": [
         {
-            "news_name": "USA vs. Netherlands World Cup live updates: Americans trail after Memphis Depay's early goal",
-            "news_url": "https://www.msn.com/en-us/sports/fifa-world-cup/usa-vs-netherlands-world-cup-live-updates-americans-trail-after-memphis-depays-early-goal/ar-AA14RvoR",
-            "news_description": "             The U.S. men's national team, which included only one player who had any World Cup experience coming into this tournament, faces the Netherlands on Saturday at 10 a.m. ET. While many",
-            "meme_urls": [
-                "https://i.imgflip.com/72wcnl.jpg",
-                "https://shutupandtakemymoney.com/wp-content/uploads/2020/05/i-bought-four-pounds-worth-of-bread-uk-vs-usa-meme.jpg",
-                "https://preview.redd.it/this-is-the-american-way-v0-uhgphxaezi3a1.png?width=640&crop=smart&auto=webp&s=45f23ae3700a7578e5f93ee86d41b6ff63626740",
-                "https://img-9gag-fun.9cache.com/photo/awZQjRr_460s.jpg",
-                "https://i.kym-cdn.com/photos/images/facebook/002/488/891/683.jpg",
-                "https://cdn.memes.com/up/34528681649863107/i/1670032755141.jpg",
-                "https://i.imgflip.com/37lbvm.jpg",
-                "https://img.ifunny.co/images/0e674e7e2460d745222f8fea3d153c87e776606625b0b6b053adce2f8f8fdd46_1.jpg",
-                "https://images3.memedroid.com/images/UPLOADED514/638a48e91412b.jpeg",
-                "https://p16-sign.tiktokcdn-us.com/obj/tos-useast5-p-0068-tx/32bda71fcdb242c5b54cb81c664b1629?x-expires=1670050800&x-signature=yqTZyrVrf1aAgOFnnokXJIF9U44%3D",
-                "https://img.ifunny.co/images/d49b2d5ad2da3931f014de3646d94d509fefe4728040c7482fa4ed781e21a5fd_1.jpg",
-                "https://nypost.com/wp-content/uploads/sites/2/2022/12/usa-netherlands-world-cup-soccer-comp.jpg?quality=75&strip=all",
-                "https://i.guim.co.uk/img/media/56cf9190fce4a7cea35f80a57295dd48ac79704b/0_0_5000_3000/master/5000.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=7416543808a4b9e3722e3590a6705e74",
-                "https://nypost.com/wp-content/uploads/sites/2/2022/12/world-soccer4-1.jpg?quality=75&strip=all&w=744",
-                "https://wjla.com/resources/media/74c1b26c-1c6f-4d42-9bbb-d5e643ef4e23-medium16x9_AP22333718173620.jpg?1670013963222",
-                "https://s01.sgp1.cdn.digitaloceanspaces.com/article/183795-pcmqvpqnql-1670043650.jpg",
-                "https://cdn.resfu.com/scripts/tmp_images/afp_en_4835abdb161b3b9d4500652eff9c1cc42bcbae08.jpg?size=1000x&lossy=1",
-                "https://d3nfwcxd527z59.cloudfront.net/content/uploads/2022/12/02152618/Kevin-De-Bruyne.jpg",
-                "https://phantom-marca.unidadeditorial.es/7d5db2b78429ae9efdb26a79c3d8975c/crop/0x0/2044x1363/resize/1320/f/jpg/assets/multimedia/imagenes/2022/12/03/16700728929105.jpg",
-                "https://static.india.com/wp-content/uploads/2022/12/Collage-Maker-03-Dec-2022-06.29-PM.jpg?impolicy=Medium_Resize&w=1200&h=800",
-                "https://pbs.twimg.com/media/FjEDPIbWIAE-kcZ?format=jpg&name=large",
-                "https://pbs.twimg.com/media/FjAF_d9XEBYydEi.jpg",
-                "https://pbs.twimg.com/media/Fi_WI_oXkBIyeca.jpg",
-                "https://pbs.twimg.com/media/Fi_SVz6XwAEoSK_.jpg",
-                "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=539664294842556",
-                "https://cdn1-production-images-kly.akamaized.net/FQG0N7zCCaGv-ghHUGfgnInoMIQ=/1200x1200/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/thumbnails/4248488/original/013269100_1670053147-klasemen-grup-g-h_-brasil-dan-swiss-ke-16-besar-diikuti-portugal-dan-korsel-_-060089.jpg",
-                "https://i.dailymail.co.uk/1s/2022/12/03/15/65204605-0-image-a-33_1670080557264.jpg",
-                "https://laopinion.com/wp-content/uploads/sites/3/2022/12/Alemania-quedo-afuera-en-la-primera-ronda-de-Qatar-2022..jpg?quality=60&strip=all&w=300",
-                "https://pbs.twimg.com/media/Fi_RnRMWAAIaSZf.jpg",
-                "https://nypost.com/wp-content/uploads/sites/2/2022/12/usa-netherlands-world-cup-soccer-comp.jpg?quality=75&strip=all&w=1024"
-            ]
-        },
-        {
             "news_name": "Apple Makes Plans to Move Production Out of China",
             "news_url": "https://www.msn.com/en-us/money/news/apple-makes-plans-to-move-production-out-of-china/ar-AA14QCFL",
             "news_description": "In recent weeks, Apple Inc. has accelerated plans to shift some of its production outside China, long the dominant country in the supply chain that built the world’s most valuable company, say people",
@@ -233,7 +196,44 @@ return_data = {
                 "https://static.toiimg.com/thumb/msid-95953703,width-1070,height-580,overlay-toi_sw,pt-32,y_pad-40,resizemode-75,imgsize-31624/95953703.jpg",
                 "https://pbs.twimg.com/media/FjACsJeXEBwo9oV?format=jpg&name=large"
             ]
-        }
+        },
+        {
+            "news_name": "USA vs. Netherlands World Cup live updates: Americans trail after Memphis Depay's early goal",
+            "news_url": "https://www.msn.com/en-us/sports/fifa-world-cup/usa-vs-netherlands-world-cup-live-updates-americans-trail-after-memphis-depays-early-goal/ar-AA14RvoR",
+            "news_description": "             The U.S. men's national team, which included only one player who had any World Cup experience coming into this tournament, faces the Netherlands on Saturday at 10 a.m. ET. While many",
+            "meme_urls": [
+                "https://i.imgflip.com/72wcnl.jpg",
+                "https://shutupandtakemymoney.com/wp-content/uploads/2020/05/i-bought-four-pounds-worth-of-bread-uk-vs-usa-meme.jpg",
+                "https://preview.redd.it/this-is-the-american-way-v0-uhgphxaezi3a1.png?width=640&crop=smart&auto=webp&s=45f23ae3700a7578e5f93ee86d41b6ff63626740",
+                "https://img-9gag-fun.9cache.com/photo/awZQjRr_460s.jpg",
+                "https://i.kym-cdn.com/photos/images/facebook/002/488/891/683.jpg",
+                "https://cdn.memes.com/up/34528681649863107/i/1670032755141.jpg",
+                "https://i.imgflip.com/37lbvm.jpg",
+                "https://img.ifunny.co/images/0e674e7e2460d745222f8fea3d153c87e776606625b0b6b053adce2f8f8fdd46_1.jpg",
+                "https://images3.memedroid.com/images/UPLOADED514/638a48e91412b.jpeg",
+                "https://p16-sign.tiktokcdn-us.com/obj/tos-useast5-p-0068-tx/32bda71fcdb242c5b54cb81c664b1629?x-expires=1670050800&x-signature=yqTZyrVrf1aAgOFnnokXJIF9U44%3D",
+                "https://img.ifunny.co/images/d49b2d5ad2da3931f014de3646d94d509fefe4728040c7482fa4ed781e21a5fd_1.jpg",
+                "https://nypost.com/wp-content/uploads/sites/2/2022/12/usa-netherlands-world-cup-soccer-comp.jpg?quality=75&strip=all",
+                "https://i.guim.co.uk/img/media/56cf9190fce4a7cea35f80a57295dd48ac79704b/0_0_5000_3000/master/5000.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=7416543808a4b9e3722e3590a6705e74",
+                "https://nypost.com/wp-content/uploads/sites/2/2022/12/world-soccer4-1.jpg?quality=75&strip=all&w=744",
+                "https://wjla.com/resources/media/74c1b26c-1c6f-4d42-9bbb-d5e643ef4e23-medium16x9_AP22333718173620.jpg?1670013963222",
+                "https://s01.sgp1.cdn.digitaloceanspaces.com/article/183795-pcmqvpqnql-1670043650.jpg",
+                "https://cdn.resfu.com/scripts/tmp_images/afp_en_4835abdb161b3b9d4500652eff9c1cc42bcbae08.jpg?size=1000x&lossy=1",
+                "https://d3nfwcxd527z59.cloudfront.net/content/uploads/2022/12/02152618/Kevin-De-Bruyne.jpg",
+                "https://phantom-marca.unidadeditorial.es/7d5db2b78429ae9efdb26a79c3d8975c/crop/0x0/2044x1363/resize/1320/f/jpg/assets/multimedia/imagenes/2022/12/03/16700728929105.jpg",
+                "https://static.india.com/wp-content/uploads/2022/12/Collage-Maker-03-Dec-2022-06.29-PM.jpg?impolicy=Medium_Resize&w=1200&h=800",
+                "https://pbs.twimg.com/media/FjEDPIbWIAE-kcZ?format=jpg&name=large",
+                "https://pbs.twimg.com/media/FjAF_d9XEBYydEi.jpg",
+                "https://pbs.twimg.com/media/Fi_WI_oXkBIyeca.jpg",
+                "https://pbs.twimg.com/media/Fi_SVz6XwAEoSK_.jpg",
+                "https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=539664294842556",
+                "https://cdn1-production-images-kly.akamaized.net/FQG0N7zCCaGv-ghHUGfgnInoMIQ=/1200x1200/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/thumbnails/4248488/original/013269100_1670053147-klasemen-grup-g-h_-brasil-dan-swiss-ke-16-besar-diikuti-portugal-dan-korsel-_-060089.jpg",
+                "https://i.dailymail.co.uk/1s/2022/12/03/15/65204605-0-image-a-33_1670080557264.jpg",
+                "https://laopinion.com/wp-content/uploads/sites/3/2022/12/Alemania-quedo-afuera-en-la-primera-ronda-de-Qatar-2022..jpg?quality=60&strip=all&w=300",
+                "https://pbs.twimg.com/media/Fi_RnRMWAAIaSZf.jpg",
+                "https://nypost.com/wp-content/uploads/sites/2/2022/12/usa-netherlands-world-cup-soccer-comp.jpg?quality=75&strip=all&w=1024"
+            ]
+        },
     ]
 }
 

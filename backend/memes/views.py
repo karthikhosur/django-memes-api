@@ -234,9 +234,8 @@ return_data = {
     ]
 }
 
+
 # Create your views here.
-
-
 @api_view(['GET'])
 def post_collection(request):
     if request.method == 'GET':
@@ -275,35 +274,12 @@ def post_collection(request):
 
             proper_nouns_list = extract_proper_nouns(doc)
 
-            image_urls = []
-            for i in range(len(proper_nouns_list)):
-                res = re.sub(r'[^a-zA-Z]', '', str(proper_nouns_list[i]))
-                if len(res) > 2:
-                    q = str(proper_nouns_list[i]) + " " + " Memes"
+            image_urls = get_image_urls(proper_nouns_list)
+            if len(image_urls) > 1:
+                t_res_template = {"news_name": news_names[i], "news_url": news_urls[i],
+                                  "news_description": news_description[i], "meme_urls": image_urls}
 
-                    q = q.replace(" ", "%20")
-
-                    url = "https://serpapi.com/search.json?q="+q + \
-                        "&tbm=isch&ijn=0&api_key=daf9ae774424cfb7f35ddf9bb59c942c04b49fa4ec6a021af3798083befd531b&tbs=qdr:d"
-
-                    payload = {}
-                    headers = {}
-
-                    response = requests.request(
-                        "GET", url, headers=headers, data=payload)
-
-                    results = response.json()
-                    i = 0
-                    while i < 10:
-                        image_urls.append(
-                            results['images_results'][i]['original'])
-                        i += 1
-
-                    if len(image_urls) > 1:
-                        t_res_template = {"news_name": news_names[i], "news_url": news_urls[i],
-                                          "news_description": news_description[i], "meme_urls": image_urls}
-
-                        total_results.append(t_res_template)
+                total_results.append(t_res_template)
 
         json_object = json.dumps(total_results, indent=4)
 
@@ -331,12 +307,38 @@ def extract_proper_nouns(doc):
     return [doc[consecutive[0]:consecutive[-1]+1] for consecutive in consecutives]
 
 
+def get_image_urls(proper_nouns_list):
+    image_urls = []
+    for i in range(len(proper_nouns_list)):
+        res = re.sub(r'[^a-zA-Z]', '', str(proper_nouns_list[i]))
+        if len(res) > 2:
+            q = str(proper_nouns_list[i]) + " " + " Memes"
+
+            q = q.replace(" ", "%20")
+
+            url = "https://serpapi.com/search.json?q="+q + \
+                "&tbm=isch&ijn=0&api_key=ef7a056dd2c29f170be3ad8780b694559f49d7abced95a4d62bec1e5bcc9b52f&tbs=qdr:d"
+
+            payload = {}
+            headers = {}
+
+            response = requests.request(
+                "GET", url, headers=headers, data=payload)
+
+            results = response.json()
+            i = 0
+            while i < 10:
+                image_urls.append(results['images_results'][i]['original'])
+                i += 1
+    return image_urls
+
+
 @api_view(['GET'])
 def cached_post_collection(request):
     if request.method == 'GET':
-        # f = open('data.json')
-        # data = json.load(f)
-        # new_data = json.dumps(data)
+        f = open('data.json')
+        data = json.load(f)
+        new_data = json.dumps(data)
         return Response(return_data)
 
 
@@ -371,4 +373,4 @@ def subscribe_or_not(request):
 def all_subscribers(request):
     if request.method == 'GET':
         instance = Subscribers.objects.all().values_list("email_id", flat=True)
-        return JsonResponse({'data': instance})
+        return Response({'data': instance})

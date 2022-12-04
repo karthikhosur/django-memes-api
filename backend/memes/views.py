@@ -350,6 +350,8 @@ def user_subscribe(request):
             instance = Subscribers.objects.all().values_list("email_id", flat=True)
             if email_id not in instance:
                 Subscribers.objects.create(email_id=email_id)
+                print("Subscribed")
+                send_simple_message(email_id)
                 return JsonResponse({"message": "Subscribed Successfully"})
 
         return JsonResponse({'data': 'failed'})
@@ -374,3 +376,14 @@ def all_subscribers(request):
     if request.method == 'GET':
         instance = Subscribers.objects.all().values_list("email_id", flat=True)
         return Response({'data': instance})
+
+
+def send_simple_message(email_id):
+    print("sending")
+    return requests.post(
+        "https://api.mailgun.net/v3/sandbox06ea921aa2234525b0590aa0fdd423ed.mailgun.org/messages",
+        auth=("api", "96b2666359c7d2a91edf06c7b5b5eb2c-680bcd74-25527948"),
+        data={"from": "Excited User <karthikhosur15@gmail.com>",
+              "to": [email_id],
+              "subject": "Thank You for Subscribing ",
+              "text": " You have agreed to recive daily newsletters. Thank You for joining us !"})
